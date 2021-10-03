@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BloodBank</title>
+{#     <link rel="stylesheet" href="styles.css">#}
+    <style>
+        h1 {
+            text-align: center;
+            color: darkred;
+            font-size: 60px;
+        }
+        form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+    </style>
+</head>
+<body>
+<h1>Blood Bank</h1>
+<form action="/login/" method='POST'>
+
+    {% csrf_token %}
+<h2>LOGIN</h2>
+    Username: <br>
+    <label>
+        <input type="text" name="username" placeholder="username">
+    </label><br>
+    Password: <br>
+    <label>
+        <input type="password" name="password" placeholder="password">
+    </label><br>
+    <input type="submit" name="submit" value="submit">
+    <div class="text-center p-t-115">
+
+
+						<a class="txt2" href={% url 'register' %} name="register" value="register">
+							register
+						</a>
+    </div>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BloodBank</title>
+    <style>
+        h1 {
+            text-align: center;
+            color: darkred;
+            font-size: 60px;
+        }
+        form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+    </style>
+</head>
+<body>
+<h1>Blood Bank</h1>
+<form action="/display/" method='POST'>
+
+    {% csrf_token %}
+<h2>ADD DONOR</h2>
+    First Name: <br>
+    <label>
+        <input type="text" name="firstname">
+    </label><br>
+    Last Name: <br>
+    <label>
+        <input type="text" name="lastname">
+    </label><br>
+
+    Blood Type: <br>
+    <label>
+        <input type="text" name="blood">
+    </label><br>
+    Contact Number: <br>
+    <label>
+        <input type="tel" name="contact">
+    </label><br>
+        Email Id: <br>
+    <label>
+        <input type="email" name="email">
+    </label><br>
+
+    <input type="submit"><br>
+
+
+
+</form>
+
+<div>
+    {% for message in messages %}
+    <h3>{{ message }}</h3>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>

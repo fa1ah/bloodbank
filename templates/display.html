@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>BloodBank</title>
+
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+        text-align: center;
+        alignment: center;
+    }
+    body{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        margin: auto;
+    }
+    input{
+        margin-bottom: 10px;
+        margin-top: 10px;
+
+    }
+    </style>
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+<form action="/add_donor/" >
+{#     {% csrf_token %}#}
+<table id="my_table" class="display">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>contact</th>
+        <th>blood type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+        <tr>
+        <td>{{i.firstname}}</td>
+        <td>{{i.contact}}</td>
+        <td>{{i.blood}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{#{% if user.is_authenticated %}#}
+<input type="submit" name="add" value="add">
+{#<input type="submit" name="logout" value="logout">#}
+{#<input type="submit" name="add" value="add"><br>#}
+
+{#    <span class="txt1">#}
+{#							logout#}
+{#						</span>#}
+{#    <a class="txt3" href="login">#}
+{#							logout#}
+{#						</a>#}
+</form>
+<form action="/login/" >
+    {% csrf_token %}
+{#    <input type="submit" name="add" value="add">#}
+    <input type="submit" name="logout" value="logout">
+</form>
+<script>
+        $(document).ready(function () {
+            $('#my_table').DataTable();
+        });
+
+        window.$ = window.jquery = require('./node_modules/jquery');
+        window.dt = require('./node_modules/datatables.net')();
+        window.$('#my_table').DataTable();
+    </script>
+</script>
+</body>
+</html>
